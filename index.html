@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>GraphQL PowerBI Generator (v2.0)</title>
+    <link rel="stylesheet" href="https://unpkg.com/marx-css/css/marx.min.css" />
+</head>
+
+<body style="margin: 10px">
+    <h1>PowerBI Query Generator for GraphQL API v4 (v2.0)</h1>
+
+    <div id="mode-selector">
+        <label for="mode-to-powerbi">
+            <input type="radio" id="mode-to-powerbi" name="mode" checked>
+            Generar consulta PowerBI
+        </label>
+        <label for="mode-to-graphql">
+            <input type="radio" id="mode-to-graphql" name="mode">
+            Generar consulta GraphQL
+        </label>
+    </div>
+
+    <div id="input-section">
+        <label for="query">Ingrese el Query GraphQL (o la estructura PowerBI):</label><br />
+        <textarea id="query" rows="8" style="width: 100%;"></textarea><br />
+    </div>
+
+    <label for="result"><a href="//docs.microsoft.com/en-us/power-bi/desktop-query-overview#advanced-editor">PowerBI
+            code</a> (o consulta GraphQL):</label><br />
+    <textarea id="result" rows="10" style="width: 100%;"></textarea>
+    <script src="script.js"></script>
+</body>
+
+</html>
