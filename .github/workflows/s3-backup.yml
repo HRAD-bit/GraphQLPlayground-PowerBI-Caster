@@ -1,25 +1,18 @@
-name: S3 Backup
-
+name: Mirror repo to S3
 on:
   push:
     branches:
       - master
-  #  schedule:
-  #   - cron: '0 0 * * *'  # Optional: Schedule the action (daily at midnight)
-
 jobs:
-  backup:
+  s3Backup:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-
-    - name: Run S3 Backup
-      uses: peter-evans/s3-backup@v1.1.1
-      env:
-        ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
-        MIRROR_TARGET: ${{ secrets.MIRROR_TARGET }}
-        SECRET_ACCESS_KEY: ${{ secrets.SECRET_ACCESS_KEY }}
-      with:
-        args: --overwrite --remove
+      - uses: actions/checkout@v2
+      - name: S3 Backup
+        uses: peter-evans/s3-backup@v1
+        env:
+          ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
+          MIRROR_TARGET: ${{ secrets.MIRROR_TARGET }}
+          SECRET_ACCESS_KEY: ${{ secrets.SECRET_ACCESS_KEY }}
+        with:
+          args: --overwrite --remove
